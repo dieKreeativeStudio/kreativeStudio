@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+	<title>Werthmüller</title>
+	<style>
+		html {
+			height:100%;
+		}
+		body {
+			background-color:#FFFFFF;
+			margin:0;
+			height:100%;
+		}
+	</style>
+	<!-- copy these lines to your document head: -->
+
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, width=device-width" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link href='https://fonts.googleapis.com/css?family=Lato&subset=latin' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" src="index.hyperesources/addtohomescreen.js"></script>
+	<script type="text/javascript" src="index.hyperesources/inobounce.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="index.hyperesources/swiper.min.css" />
+	<script type="text/javascript" src="index.hyperesources/swiper.min.js"></script>
+	<script type="text/javascript" src="index.hyperesources/jquery.js"></script>
+	<link rel="stylesheet" type="text/css" href="index.hyperesources/fontawesome.css" />
+	<link rel="stylesheet" type="text/css" href="index.hyperesources/icomoon.css" />
+	<link rel="stylesheet" type="text/css" href="index.hyperesources/addtohomescreen.css" />
+	
+		
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="translucent black" />
+    <meta name="theme-color" content="#ffffff" />
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+<link rel="manifest" href="icons/manifest.json">
+<link rel="shortcut icon" href="icons/favicon.ico">
+<meta name="msapplication-config" content="icons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+	
+	
+	<script>
+    
+        (function(document,navigator,standalone) {
+            // prevents links from apps from oppening in mobile safari
+            // this javascript must be the first script in your <head>
+            if ((standalone in navigator) && navigator[standalone]) {
+                var curnode, location=document.location, stop=/^(a|html)$/i;
+                document.addEventListener('click', function(e) {
+                    curnode=e.target;
+                    while (!(stop).test(curnode.nodeName)) {
+                        curnode=curnode.parentNode;
+                    }
+                    // Condidions to do this only on links to your own app
+                    // if you want all links, use if('href' in curnode) instead.
+                    if('href' in curnode && ~curnode.href.indexOf(location.host)) {                
+                        e.preventDefault();
+                        location.href = curnode.href;
+                    }
+                },false);
+            }
+        })(document,window.navigator,'standalone');
+      
+      </script>
+	
+	
+	<style>
+	
+	* {
+		-webkit-overflow-scrolling: touch;
+	}
+	
+	*:not(input):not(textarea) {
+		-webkit-user-select: none; /* disable selection/Copy of UIWebView */
+		-webkit-touch-callout: none; /* disable the IOS popup when long-press on a link */
+    }	
+	
+	
+	/* Für Samsung Galaxy Mini etc (320x240px) */
+	@media all and (min-width: 240px) and (min-height: 320px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform		: scale(0.3 , 0.25);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform	: scale(0.3 , 0.25);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform		: scale(0.3 , 0.25);
+            -ms-transform-origin: 0% 0%;
+			-o-transform 	    : scale(0.3 , 0.25);
+            -o-transform-origin: 0% 0%;
+			transform        	: scale(0.3 , 0.25);
+            transform-origin: 0% 0%;
+		}
+	}
+	/* Für HTC Wildfire etc (356x267px) */
+	@media all and (min-width: 267px) and (min-height: 356px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform		: scale(0.33375 , 0.278125);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform	: scale(0.33375 , 0.278125);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform		: scale(0.33375 , 0.278125);
+            -ms-transform-origin: 0% 0%;
+			-o-transform 	    : scale(0.33375 , 0.278125);
+            -o-transform-origin: 0% 0%;
+			transform        	: scale(0.33375 , 0.278125);
+            transform-origin: 0% 0%;
+		}
+	}
+	/* Für Alcatel One Touch etc (427x320px) */
+	@media all and (min-width: 320px) and (min-height: 427px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform		: scale(0.4 , 0.33359375);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform	: scale(0.4 , 0.33359375);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform		: scale(0.4 , 0.33359375);
+            -ms-transform-origin: 0% 0%;
+			-o-transform 	    : scale(0.4 , 0.33359375);
+            -o-transform-origin: 0% 0%;
+			transform        	: scale(0.4 , 0.33359375);
+            transform-origin: 0% 0%;
+		}
+	}
+		
+    /* Für iPhone 4 etc (480x320px) */
+	@media all and (min-width: 320px) and (min-height: 460px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform		: scale(0.4 , 0.359375);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform	: scale(0.4 , 0.359375);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform		: scale(0.4 , 0.359375);
+            -ms-transform-origin: 0% 0%;
+			-o-transform 	    : scale(0.4 , 0.359375);
+            -o-transform-origin: 0% 0%;
+			transform        	: scale(0.4 , 0.359375);
+            transform-origin: 0% 0%;
+		}
+	}
+    /* Für iPhone 4 etc (480x320px) */
+	@media all and (min-width: 320px) and (min-height: 480px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform		: scale(0.4 , 0.375);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform	: scale(0.4 , 0.375);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform		: scale(0.4 , 0.375);
+            -ms-transform-origin: 0% 0%;
+			-o-transform 	    : scale(0.4 , 0.375);
+            -o-transform-origin: 0% 0%;
+			transform        	: scale(0.4 , 0.375);
+            transform-origin: 0% 0%;
+		}
+	}
+    /* Für HTC Desire HD etc - Auflösung 533x320px */ 
+    @media all and (min-width: 320px) and (min-height: 533px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform:      scale(0.4 , 0.41640625);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform:   scale(0.4 , 0.41640625);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform:       scale(0.4 , 0.41640625);
+            -ms-transform-origin: 0% 0%;
+			-o-transform:        scale(0.4 , 0.41640625);
+            -o-transform-origin: 0% 0%;
+			transform:           scale(0.4 , 0.41640625);
+            transform-origin: 0% 0%;
+		}
+	}
+    /* Für iPhone 5 etc (568x320px) */
+    @media all and (min-width: 320px) and (min-height: 548px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform		: scale(0.4 , 0.428125);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform	: scale(0.4 , 0.428125);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform		: scale(0.4 , 0.428125);
+            -ms-transform-origin: 0% 0%;
+			-o-transform 	    : scale(0.4 , 0.428125);
+            -o-transform-origin: 0% 0%;
+			transform        	: scale(0.4 , 0.428125);
+            transform-origin: 0% 0%;
+		}
+	}
+    /* Für iPhone 5 etc (568x320px) */
+    @media all and (min-width: 320px) and (min-height: 568px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform		: scale(0.4 , 0.44375);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform	: scale(0.4 , 0.44375);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform		: scale(0.4 , 0.44375);
+            -ms-transform-origin: 0% 0%;
+			-o-transform 	    : scale(0.4 , 0.44375);
+            -o-transform-origin: 0% 0%;
+			transform        	: scale(0.4 , 0.44375);
+            transform-origin: 0% 0%;
+		}
+	}
+	/* Für Nexus 5, Motorola Razr HD etc - Auflösung 598x360px */
+    @media all and (min-width: 360px) and (min-height: 573px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform		: scale(0.45 , 0.44765625);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform	: scale(0.45 , 0.44765625);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform		: scale(0.45 , 0.44765625);
+            -ms-transform-origin: 0% 0%;
+			-o-transform 	    : scale(0.45 , 0.44765625);
+            -o-transform-origin: 0% 0%;
+			transform        	: scale(0.45 , 0.44765625);
+            transform-origin: 0% 0%;
+		}
+	}
+    /* Für Nexus 5, Motorola Razr HD etc - Auflösung 598x360px */
+    @media all and (min-width: 360px) and (min-height: 598px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform		: scale(0.45 , 0.4671875);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform	: scale(0.45 , 0.4671875);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform		: scale(0.45 , 0.4671875);
+            -ms-transform-origin: 0% 0%;
+			-o-transform 	    : scale(0.45 , 0.4671875);
+            -o-transform-origin: 0% 0%;
+			transform        	: scale(0.45 , 0.4671875);
+            transform-origin: 0% 0%;
+		}
+	}
+    /* Für Nexus 4 etc - Auflösung 598x384px */
+    @media all and (min-width: 384px) and (min-height: 598px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform		: scale(0.48 , 0.4671875);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform	: scale(0.48 , 0.4671875);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform		: scale(0.48 , 0.4671875);
+            -ms-transform-origin: 0% 0%;
+			-o-transform 	    : scale(0.48 , 0.4671875);
+            -o-transform-origin: 0% 0%;
+			transform        	: scale(0.48 , 0.4671875);
+            transform-origin: 0% 0%;
+		}
+	}
+    /* Für Samsung Galaxy S3 etc (640x360px) */
+    @media all and (min-width: 360px) and (min-height: 640px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform		: scale(0.45 , 0.5);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform	: scale(0.45 , 0.5);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform		: scale(0.45 , 0.5);
+            -ms-transform-origin: 0% 0%;
+			-o-transform 	    : scale(0.45 , 0.5);
+            -o-transform-origin: 0% 0%;
+			transform        	: scale(0.45 , 0.5);
+            transform-origin: 0% 0%;
+		}
+	}
+    /* Für Samsung Galaxy S3 etc (640x360px) */
+    @media all and (min-width: 360px) and (min-height: 615px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform		: scale(0.45 , 0.48046875);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform	: scale(0.45 , 0.48046875);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform		: scale(0.45 , 0.48046875);
+            -ms-transform-origin: 0% 0%;
+			-o-transform 	    : scale(0.45 , 0.48046875);
+            -o-transform-origin: 0% 0%;
+			transform        	: scale(0.45 , 0.48046875);
+            transform-origin: 0% 0%;
+		}
+	}
+	/* Für iPhone 6 (667x375px) */
+    @media all and (min-width: 375px) and (min-height: 647px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform		: scale(0.46875 , 0.50546875);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform	: scale(0.46875 , 0.50546875);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform		: scale(0.46875 , 0.50546875);
+            -ms-transform-origin: 0% 0%;
+			-o-transform 	    : scale(0.46875 , 0.50546875);
+            -o-transform-origin: 0% 0%;
+			transform        	: scale(0.46875 , 0.50546875);
+            transform-origin: 0% 0%;
+		}
+	}
+	/* Für iPhone 6 (667x375px) */
+    @media all and (min-width: 375px) and (min-height: 667px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform		: scale(0.46875 , 0.52109375);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform	: scale(0.46875 , 0.52109375);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform		: scale(0.46875 , 0.52109375);
+            -ms-transform-origin: 0% 0%;
+			-o-transform 	    : scale(0.46875 , 0.52109375);
+            -o-transform-origin: 0% 0%;
+			transform        	: scale(0.46875 , 0.52109375);
+            transform-origin: 0% 0%;
+		}
+	}
+    /* Für iPhone 6+ (736x414px) */
+    @media all and (min-width: 414px) and (min-height: 716px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform		: scale(0.5175 , 0.559375);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform	: scale(0.5175 , 0.559375);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform		: scale(0.5175 , 0.559375);
+            -ms-transform-origin: 0% 0%;
+			-o-transform 	    : scale(0.5175 , 0.559375);
+            -o-transform-origin: 0% 0%;
+			transform        	: scale(0.5175 , 0.559375);
+            transform-origin: 0% 0%;
+		}
+	}
+	/* Für iPhone 6+ (736x414px) */
+    @media all and (min-width: 414px) and (min-height: 736px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform		: scale(0.5175 , 0.575);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform	: scale(0.5175 , 0.575);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform		: scale(0.5175 , 0.575);
+            -ms-transform-origin: 0% 0%;
+			-o-transform 	    : scale(0.5175 , 0.575);
+            -o-transform-origin: 0% 0%;
+			transform        	: scale(0.5175 , 0.575);
+            transform-origin: 0% 0%;
+		}
+	}
+    /* Für Nokia Lumia 535 etc (750x450px) */
+    @media all and (min-width: 450px) and (min-height: 750px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform		: scale(0.5625 , 0.5859375);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform	: scale(0.5625 , 0.5859375);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform		: scale(0.5625 , 0.5859375);
+            -ms-transform-origin: 0% 0%;
+			-o-transform 	    : scale(0.5625 , 0.5859375);
+            -o-transform-origin: 0% 0%;
+			transform        	: scale(0.5625 , 0.5859375);
+            transform-origin: 0% 0%;
+		}
+	}
+	/* Für Nokia Lumia 830 etc (800x450px) */
+    @media all and (min-width: 450px) and (min-height: 800px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform		: scale(0.5625 , 0.625);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform	: scale(0.5625 , 0.625);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform		: scale(0.5625 , 0.625);
+            -ms-transform-origin: 0% 0%;
+			-o-transform 	    : scale(0.5625 , 0.625);
+            -o-transform-origin: 0% 0%;
+			transform        	: scale(0.5625 , 0.625);
+            transform-origin: 0% 0%;
+		}
+	}
+    /* Für HTC Desire Z etc - Auflösung 800x480px */ 
+    @media all and (min-width: 480px) and (min-height: 800px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform:      scale(0.6 , 0.625);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform:   scale(0.6 , 0.625);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform:       scale(0.6 , 0.625);
+            -ms-transform-origin: 0% 0%;
+			-o-transform:        scale(0.6 , 0.625);
+            -o-transform-origin: 0% 0%;
+			transform:           scale(0.6 , 0.625);
+            transform-origin: 0% 0%;
+		}
+	}
+    /* Für Kindle Fire HD 7/8 etc - Auflösung 801x533px */ 
+    @media all and (min-width: 533px) and (min-height: 801px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform:      scale(0.66625 , 0.62578125);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform:   scale(0.66625 , 0.62578125);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform:       scale(0.66625 , 0.62578125);
+            -ms-transform-origin: 0% 0%;
+			-o-transform:        scale(0.66625 , 0.62578125);
+            -o-transform-origin: 0% 0%;
+			transform:           scale(0.66625 , 0.62578125);
+            transform-origin: 0% 0%;
+		}
+	}
+    /* Für Kindle Fire HDX 7 etc - Auflösung 902x600px */ 
+    @media all and (min-width: 600px) and (min-height: 902px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform:      scale(0.75 , 0.7046875);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform:   scale(0.75 , 0.7046875);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform:       scale(0.75 , 0.7046875);
+            -ms-transform-origin: 0% 0%;
+			-o-transform:        scale(0.75 , 0.7046875);
+            -o-transform-origin: 0% 0%;
+			transform:           scale(0.75 , 0.7046875);
+            transform-origin: 0% 0%;
+		}
+	}
+    /* Für HTC Desire Evo 3D etc - Auflösung 960x540px */ 
+    @media all and (min-width: 540px) and (min-height: 960px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform:      scale(0.675 , 0.75);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform:   scale(0.675 , 0.75);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform:       scale(0.675 , 0.75);
+            -ms-transform-origin: 0% 0%;
+			-o-transform:        scale(0.675 , 0.75);
+            -o-transform-origin: 0% 0%;
+			transform:           scale(0.675 , 0.75);
+            transform-origin: 0% 0%;
+		}
+	}
+    /* Für Nexus 7 etc - Auflösung 966x603px */ 
+    @media all and (min-width: 603px) and (min-height: 966px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform:      scale(0.75375 , 0.7546875);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform:   scale(0.75375 , 0.7546875);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform:       scale(0.75375 , 0.7546875);
+            -ms-transform-origin: 0% 0%;
+			-o-transform:        scale(0.75375 , 0.7546875);
+            -o-transform-origin: 0% 0%;
+			transform:           scale(0.75375 , 0.7546875);
+            transform-origin: 0% 0%;
+		}
+	}
+    /* Für Samsung Galaxy Tab etc - Auflösung 1024x600px */ 
+    @media all and (min-width: 600px) and (min-height: 1024px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform:      scale(0.75 , 0.8);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform:   scale(0.75 , 0.8);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform:       scale(0.75 , 0.8);
+            -ms-transform-origin: 0% 0%;
+			-o-transform:        scale(0.75 , 0.8);
+            -o-transform-origin: 0% 0%;
+			transform:           scale(0.75 , 0.8);
+            transform-origin: 0% 0%;
+		}
+	}
+    /* Für iPad etc (1024x768px) */
+    @media all and (min-width: 768px) and (min-height: 1004px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform		: scale(0.96 , 0.784375);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform	: scale(0.96 , 0.784375);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform		: scale(0.96 , 0.784375);
+            -ms-transform-origin: 0% 0%;
+			-o-transform 	    : scale(0.96 , 0.784375);
+            -o-transform-origin: 0% 0%;
+			transform        	: scale(0.96 , 0.784375);
+            transform-origin: 0% 0%;
+		}
+	}
+    /* Für iPad etc (1024x768px) */
+    @media all and (min-width: 768px) and (min-height: 1024px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform		: scale(0.96 , 0.8);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform	: scale(0.96 , 0.8);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform		: scale(0.96 , 0.8);
+            -ms-transform-origin: 0% 0%;
+			-o-transform 	    : scale(0.96 , 0.8);
+            -o-transform-origin: 0% 0%;
+			transform        	: scale(0.96 , 0.8);
+            transform-origin: 0% 0%;
+		}
+	}
+    /* Für Acer Iconia etc - Auflösung 1280x648px */
+    @media all and (min-width: 648px) and (min-height: 1280px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform		: scale(0.81 , 1);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform	: scale(0.81 , 1);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform		: scale(0.81 , 1);
+            -ms-transform-origin: 0% 0%;
+			-o-transform 	    : scale(0.81 , 1);
+            -o-transform-origin: 0% 0%;
+			transform        	: scale(0.81 , 1);
+            transform-origin: 0% 0%;
+		}
+	}
+    /* Für Samsung Tab etc (1280x800px) */
+    @media all and (min-width: 800px) and (min-height: 1280px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform		: scale(1 , 1);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform	: scale(1 , 1);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform		: scale(1 , 1);
+            -ms-transform-origin: 0% 0%;
+			-o-transform 	    : scale(1 , 1);
+            -o-transform-origin: 0% 0%;
+			transform        	: scale(1 , 1);
+            transform-origin: 0% 0%;
+		}
+	}
+    /* Für iPad Pro (1366x1004px) */
+    @media screen and (min-width: 1024px) and (min-height: 1346px) and (orientation: portrait){
+		#index_hype_container {
+			-moz-transform		: scale(1.28 , 1.0515625);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform	: scale(1.28 , 1.0515625);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform		: scale(1.28 , 1.0515625);
+            -ms-transform-origin: 0% 0%;
+			-o-transform 	    : scale(1.28 , 1.0515625);
+            -o-transform-origin: 0% 0%;a
+			transform        	: scale(1.28 , 1.0515625);
+            transform-origin: 0% 0%;
+		}
+	}
+    /* Für iPad Pro (1366x1024px) */
+    @media screen and (min-width: 1024px) and (min-height: 1366px) and (orientation: portrait){
+		#index_hype_container {
+			margin: auto;
+            -moz-transform		: scale(1.28 , 1.0671875);
+            -moz-transform-origin: 0% 0%;
+			-webkit-transform	: scale(1.28 , 1.0671875);
+            -webkit-transform-origin: 0% 0%;
+			-ms-transform		: scale(1.28 , 1.0671875);
+            -ms-transform-origin: 0% 0%;
+			-o-transform 	    : scale(1.28 , 1.0671875);
+            -o-transform-origin: 0% 0%;a
+			transform        	: scale(1.28 , 1.0671875);
+            transform-origin: 0% 0%;
+		}
+	}
+	</style>
+	
+	
+	
+
+	<!-- end copy -->
+  </head>
+  <body>
+	<!-- copy these lines to your document: -->
+
+	<div id="index_hype_container" style="margin:auto;position:relative;width:800px;height:1280px;overflow:hidden;">
+		<script type="text/javascript" charset="utf-8" src="index.hyperesources/index_hype_generated_script.js?70808"></script>
+	</div>
+
+	<!-- end copy -->
+	
+
+
+	<!-- text content for search engines: -->
+
+	<div style="display:none" aria-hidden=true>
+
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div>Hauptstrasse 35, CH-4463 Buus/BL
+</div>
+		<div>Spenglerei Bedachungen, Holzbau, Balkon- und Wintergartenverglasungen</div>
+		<div></div>
+		<div></div>
+		<div>Genuastrasse 15, CH-4142 Münchenstein
+</div>
+		<div></div>
+		<div>Projekte</div>
+		<div></div>
+		<div></div>
+		<div>Kontakt</div>
+		<div>Partner</div>
+		<div>Services</div>
+		<div></div>
+		<div>Datenschutz
+
+Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung. Die Nutzung unserer Webapp ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder E-Mail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben. Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.
+
+
+</div>
+		<div>Schecker & Cie Keramik, Genuastrasse 15
+CH-4142 Münchenstein
+
+
+
+
+</div>
+		<div></div>
+		<div></div>
+		<div>Wir freuen uns über Ihre Nachricht
+Name * 
+E-Mail * 
+Nachricht * 
+* Pflichtfeld
+Abschicken Leeren
+</div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div>Tel: +41 61 331 60 11
+scheckerkeramik@bluewin.ch
+</div>
+		<div>Herausgeber
+
+Schecker & Cie Keramik
+Wand- und Bodenbeläge aus Keramik und Naturstein
+Genuastrasse 15
+CH-4142 Münchenstein 
+Telefon: +41 61 331 60 11
+scheckerkeramik at bluewin.ch
+
+</div>
+		<div></div>
+		<div>Entwickler
+
+App & Web Fabrik
+Johann-Sebastian-Bach-Straße 13
+D-67549 Worms
+Tel. +49 (0)6241 30 93 110
+info@awf.marketing
+www.awf.marketing 
+</div>
+		<div>Seit 2013 sind wir ein junger und dynamischer Meisterbetrieb mit Sitz in Münchenstein (Dreispitz). Wir beraten Sie gerne bei der Planung für Wohn- und Einfamilienhäuser, Wohnüberbauungen, Bürokomplexe und Industriebauten wie Fitnessräume, Wellnessbereiche, Restaurans, Verkaufsflächen.
+
+Wir…
+… bieten eine kompetente Beratung
+… bieten eine detaillierte Planung
+… garantieren für eine qualitativ hochstehende und fristgerechte Ausführung
+… bieten ein faires und seriöses Preis-Leistungs-Verhältnis
+… garantieren für unsere Arbeiten
+</div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div>Rössligasse 9, CH-4460
+Tel. 061 981 60 00
+info@a-f-a.ch
+</div>
+		<div>Rössligasse 9, CH-4460 Gelterkinden 
+</div>
+		<div>Tel. 061 981 60 00
+</div>
+		<div>Herausgeber
+
+Atelier für Architektur
+Rössligasse 9
+CH-4460 Gelterkinden
+Tel. +41 61 981 60 00
+info@a-f-a.ch
+www.a-f-a.ch
+</div>
+		<div>info@a-f-a.ch
+</div>
+		<div>Wir freuen uns über Ihre Nachricht
+Name * 
+E-Mail * 
+Nachricht * 
+* Pflichtfeld
+Abschicken Leeren
+</div>
+		<div>Wir nehmen uns Zeit für Sie.
+Der Wunsch des Bauherrn steht im Mittelpunkt. Diese Wünsche nachhaltig und ökologisch umzusetzen ist unser Ziel. Auf diesem Weg pflegen wir den Kontakt zu Bauherrschaft, Behörden und Handwerkern kontinuierlich.Das Büro
+Unser Architekturbüro liegt im Dorfzentrum von Gelterkinden. Matthias Werthmüller gründete das Büro 1996 als Einzelfirma, welche vor 1999 in eine GmbH umgewandelt wurde. Unser Team wird nach Bedarf durch freie MitarbeiterInnen ergänzt.NEUBAU
+Wir haben uns immer mehr auf Minergie - Bauten spezialisiert. Das Bauen nach ökologischen und nachhaltigen Grundsätzen gehört zu unserer Philosophie.ANBAU / UMBAU
+Die alte Bausubstanz möchten wir subtil angehen und als Gegensatz mit modernen Materialien ergänzen. Somit wird der Charakter des Hauses erhalten und mit Liebe zum Detail optimal um neue Objekte erweitert.</div>
+		<div>MINERGIE</div>
+		<div>UMBAU</div>
+		<div>HOLZELEMENTBAU</div>
+		<div>ZIRKUSWAGEN SANIERUNG</div>
+		<div>PFARRHAUS GELTERKINDEN UMBAU</div>
+		<div>NEUBAU</div>
+		<div>EFH-ROTHENFLUH</div>
+		<div>ZFH SISSACH</div>
+
+	</div>
+
+	
+
+  </body>
+</html>
